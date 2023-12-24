@@ -1,7 +1,7 @@
 # Weather Data Application
 
 ## Descrição
-Esta aplicação, desenvolvida em Java/Quarkus, tem como objetivo obter dados climáticos de duas cidades diferentes e guardalos em um banco de dados PostgreSQL. Utiliza o serviço OpenWeatherMap para a obtenção desses dados climáticos e integra-se com um broker MQTT (Mosquitto) para o envio e recebimento de informações.
+Esta aplicação, desenvolvida em Java/Quarkus, tem como objetivo obter dados climáticos de duas cidades diferentes e guarda-los em um banco de dados PostgreSQL. Utiliza o serviço OpenWeatherMap para a obtenção desses dados climáticos e integra-se com um broker MQTT (Mosquitto) para o envio e recebimento de informações.
 
 ## Requisitos
 - Java 11 ou superior
@@ -32,16 +32,13 @@ A estrutura do projeto está organizada da seguinte maneira:
 ## Executando a Aplicação
 1. Certifique-se de ter todas as dependências e configurações corretamente.
 2. Execute a aplicação com o comando `mvn quarkus:dev`.
-3. A aplicação estará acessível em `http://localhost:8080`.
+3. A aplicação estará acessível em `http://localhost:8080/weather`.
 
 ## Funcionalidades
 - **Scheduler:** Agendamento para buscar dados climáticos a cada 20 segundos.
 - **REST Endpoint:** Endpoint REST para obter dados climáticos das cidades.
 - **Integração MQTT:** Envio e recebimento de dados do broker MQTT.
 - **Persistência de Dados:** Persistência dos dados climáticos no banco de dados PostgreSQL.
-
-## Contribuindo
-Sinta-se à vontade para contribuir com melhorias, reportar problemas ou adicionar novas funcionalidades. Basta abrir uma issue ou enviar um pull request.
 
 ## Sobre a OpenWeatherMap
 A OpenWeatherMap é um serviço online que fornece dados climáticos, previsões meteorológicas e informações relacionadas ao clima em tempo real. Neste projeto, é usada para obter os dados climáticos das cidades especificadas.

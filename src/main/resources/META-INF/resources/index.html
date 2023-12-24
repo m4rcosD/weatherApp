@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <H1>TESTING FIRST PAGE</H1>
+        <meta charset="UTF-8">
+        <title>Informações do Clima</title>
     </head>
     <body>
-        <H2>AQUI VAMOS TER OS DADOS DA API</H2>
+        <h1>Informações do Clima</h1>
+        <div id="city1">Primeira cidade: </div>
+        <div th:text="${climaCidade1}"></div>
+        <P>1 - COLOCAR HORA QUE FOI RECEBIDA A ATT</P>
+        <P>2 - LOCAL </P>
+        <P>3 - TEMPERATURA</P>
+        <div id="city2">segunda cidade</div>
+        <div th:text="${climaCidade2}"></div>
         <P>1 - COLOCAR HORA QUE FOI RECEBIDA A ATT</P>
         <P>2 - LOCAL </P>
         <P>3 - TEMPERATURA</P>

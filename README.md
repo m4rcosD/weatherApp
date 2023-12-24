@@ -1,7 +1,7 @@
 # Weather Data Application
 
 ## Descrição
-Esta aplicação, desenvolvida em Java/Kotlin/Quarkus, tem como objetivo obter dados climáticos de duas cidades diferentes e guardalos em um banco de dados PostgreSQL. Utiliza o serviço OpenWeatherMap para a obtenção desses dados climáticos e integra-se com um broker MQTT (Mosquitto) para o envio e recebimento de informações.
+Esta aplicação, desenvolvida em Java/Quarkus, tem como objetivo obter dados climáticos de duas cidades diferentes e guardalos em um banco de dados PostgreSQL. Utiliza o serviço OpenWeatherMap para a obtenção desses dados climáticos e integra-se com um broker MQTT (Mosquitto) para o envio e recebimento de informações.
 
 ## Requisitos
 - Java 11 ou superior

@@ -40,6 +40,9 @@ A estrutura do projeto está organizada da seguinte maneira:
 - **Integração MQTT:** Envio e recebimento de dados do broker MQTT.
 - **Persistência de Dados:** Persistência dos dados climáticos no banco de dados PostgreSQL.
 
+## Contribuindo
+Sinta-se à vontade para contribuir com melhorias, reportar problemas ou adicionar novas funcionalidades. Basta abrir uma issue ou enviar um pull request.
+
 ## Sobre a OpenWeatherMap
 A OpenWeatherMap é um serviço online que fornece dados climáticos, previsões meteorológicas e informações relacionadas ao clima em tempo real. Neste projeto, é usada para obter os dados climáticos das cidades especificadas.
 

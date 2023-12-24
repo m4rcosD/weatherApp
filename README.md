@@ -1,56 +1,56 @@
-# temperature-monitoring-two-cities
+# Weather Data Application
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+## Descrição
+Esta aplicação, desenvolvida em Java/Kotlin/Quarkus, tem como objetivo obter dados climáticos de duas cidades diferentes e persisti-los em um banco de dados PostgreSQL. Utiliza o serviço OpenWeatherMap para a obtenção desses dados climáticos e integra-se com um broker MQTT (Mosquitto) para o envio e recebimento de informações.
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+## Requisitos
+- Java 11 ou superior
+- Quarkus Framework
+- Broker MQTT (Mosquitto)
+- Banco de dados PostgreSQL
 
-## Running the application in dev mode
+## Configurações
+Certifique-se de configurar corretamente as seguintes propriedades:
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
-```
+- **OpenWeatherMap API Key:** `weather.api.key`
+- **Coordenadas das Cidades:**
+  - `city1.latitude`, `city1.longitude` para a primeira cidade
+  - `city2.latitude`, `city2.longitude` para a segunda cidade
+- **Configurações do Mosquitto:**
+  - `mqtt.topic` para o tópico MQTT
+  - `mqtt.server.host`, `mqtt.server.port` para o host e porta do servidor MQTT
+- **Configurações do PostgreSQL:**
+  - Detalhes de conexão com o banco de dados PostgreSQL (`quarkus.datasource`)
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+## Estrutura do Projeto
+A estrutura do projeto está organizada da seguinte maneira:
 
-## Packaging and running the application
+- `com.weather.models`: Contém a entidade `WeatherDataEntity` para mapeamento da tabela no banco de dados.
+- `com.weather.mosquitto`: Possui classes para enviar e receber dados do broker MQTT.
+- `com.weather`: Contém os agendamentos e recursos para obter dados climáticos e processá-los.
 
-The application can be packaged using:
-```shell script
-./mvnw package
-```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+## Executando a Aplicação
+1. Certifique-se de ter todas as dependências e configurações corretamente.
+2. Execute a aplicação com o comando `mvn quarkus:dev`.
+3. A aplicação estará acessível em `http://localhost:8080`.
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+## Funcionalidades
+- **Scheduler:** Agendamento para buscar dados climáticos a cada 20 segundos.
+- **REST Endpoint:** Endpoint REST para obter dados climáticos das cidades.
+- **Integração MQTT:** Envio e recebimento de dados do broker MQTT.
+- **Persistência de Dados:** Persistência dos dados climáticos no banco de dados PostgreSQL.
 
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
+## Contribuindo
+Sinta-se à vontade para contribuir com melhorias, reportar problemas ou adicionar novas funcionalidades. Basta abrir uma issue ou enviar um pull request.
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+## Sobre a OpenWeatherMap
+A OpenWeatherMap é um serviço online que fornece dados climáticos, previsões meteorológicas e informações relacionadas ao clima em tempo real. Neste projeto, é usada para obter os dados climáticos das cidades especificadas.
 
-## Creating a native executable
+É uma plataforma de previsão do tempo e serviços meteorológicos que oferece dados climáticos em tempo real e previsões precisas para diversas localizações ao redor do mundo. Ela fornece uma API acessível para desenvolvedores integrarem informações meteorológicas em suas aplicações.
 
-You can create a native executable using: 
-```shell script
-./mvnw package -Dnative
-```
+A integração com a API envolve o uso de endpoints RESTful para obter dados climáticos atuais, previsões futuras, informações sobre vento, umidade, temperatura e muito mais, tudo baseado nas coordenadas geográficas ou nome da cidade especificada.
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
+As chaves da API (como `weather.api.key`) são fornecidas pela OpenWeatherMap para autenticar e permitir o acesso aos dados.
 
-You can then execute your native executable with: `./target/temperature-monitoring-two-cities-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
-
-## Provided Code
-
-### RESTEasy Reactive
-
-Easily start your Reactive RESTful Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+## Autor
+- Marcos D.

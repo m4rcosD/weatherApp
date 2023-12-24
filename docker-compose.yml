@@ -1,15 +1,9 @@
-version: '3.8'
-
 services:
   postgres:
     image: postgres:latest
-    container_name: my-postgres-container
-    env_file:
-      - ./postgres_config.env
+    environment:
+      POSTGRES_USER: m4rcosd
+      POSTGRES_PASSWORD: 40028922Mp.
+      POSTGRES_DB: weatherData # Nome do banco de dados
     ports:
       - "5432:5432"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-
-volumes:
-  postgres-data:

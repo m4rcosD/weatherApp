@@ -7,6 +7,10 @@ import java.time.format.DateTimeFormatter;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
+import org.eclipse.paho.client.mqttv3.IMqttClient;
+import org.eclipse.paho.client.mqttv3.MqttException;
+
+import com.weather.mosquitto.MosquittoDataProducer;
 
 import javax.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -41,6 +45,23 @@ public class WeatherResource {
     @ConfigProperty(name = "weather.api.key")
     String apiKey;
 
+    @Inject
+     MosquittoDataProducer weatherDataProducer;
+
+     private IMqttClient mqttClient;
+
+
+    public void sendDataToMosquitto(String weatherData) {
+        // Enviar dados para o Mosquitto usando mqttClientMosquittoDataProducer 
+        try {
+            if (mqttClient != null && mqttClient.isConnected()) {
+                mqttClient.disconnect();
+            }
+        } catch (MqttException e) {
+            e.printStackTrace();
+        }
+    }
+    
     // Método para obter dados climáticos para as cidades
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -53,9 +74,11 @@ public class WeatherResource {
         String processedWeatherCity1 = processWeatherData(weatherCity1);
         String processedWeatherCity2 = processWeatherData(weatherCity2);
 
+
         // Retornar os dados processados em formato JSON
         return "{\"city1\": " + processedWeatherCity1 + ", \"city2\": " + processedWeatherCity2 + "}";
     }
+
 
     // Método para processar os dados climáticos
     public String processWeatherData(String weatherData) {
